@@ -1,0 +1,5 @@
+main () {
+    var float teste_1;
+    teste = 9.0;
+    printLn teste;
+}

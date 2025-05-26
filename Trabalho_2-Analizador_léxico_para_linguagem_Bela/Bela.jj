@@ -1,0 +1,105 @@
+PARSER_BEGIN(Bela)
+
+import java.io.*;
+public class Bela {
+    public static void main(String args[]) throws ParseException,IOException {
+        Bela analisador = new Bela(new FileInputStream(args[0]));
+ 	    analisador.Bela();
+    }
+}
+
+PARSER_END(Bela)
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}
+
+TOKEN :
+{
+      <MAIN: "main">
+    | <VAR: "var">
+    | <FLOAT: "float">
+    | <BOOL: "bool">
+    | <VOID: "void">
+    | <IF: "if">
+    | <WHILE: "while">
+    | <RETURN: "return">
+    | <PRINT: "printLn">
+    | <TRUE: "true">
+    | <FALSE: "false">
+    | <READ: "readInput">
+
+    | <ADD: "+">
+    | <SUB: "-">
+    | <MULT: "*">
+    | <DIV: "/">
+    | <AND: "&&">
+    | <OR: "||">
+    | <LESS_THAN: "<">
+    | <MORE_THAN: ">" >
+    | <EQUALS: "==">
+
+    | <COMMA: ",">
+    | <ATRIB: "=">
+    | <APAR: "(">
+    | <FPAR: ")">
+    | <ACHAVES: "{">
+    | <FCHAVES: "}">
+    | <END_LINE: ";">
+}
+
+TOKEN :
+{
+     <NUM : (["0"-"9"])+ ("." (["0"-"9"])+)? ("E" ("+" | "-")? (["0"-"9"])+)?>
+    |<ID: ["a"-"z","A"-"Z"] (("_")? (["a"-"z","A"-"Z","0"-"9"]))*>
+}
+
+
+
+void Bela () :
+{Token t;}
+{
+    (
+      <MAIN> { System.out.println("Palavra reservada: main");}
+    | <VAR> { System.out.println("Palavra reservada: var");}
+    | <FLOAT> { System.out.println("Tipo: float");}
+    | <BOOL> { System.out.println("Tipo: bool");}
+    | <VOID> { System.out.println("Tipo: void");}
+    | <TRUE> { System.out.println("Valor lógico: true");}
+    | <FALSE> { System.out.println("Valor lógico: false");}
+
+    | <IF> { System.out.println("Palavra reservada: if");}
+    | <WHILE> { System.out.println("Palavra reservada: while");}
+    | <RETURN> { System.out.println("Palavra reservada: return");}
+    | <PRINT> { System.out.println("Palavra reservada: printLn");}
+    | <READ> { System.out.println("Palavra reservada: readInput");}
+
+    | <ADD> { System.out.println("Operador matemático: +");}
+    | <SUB> { System.out.println("Operador matemático: -");}
+    | <MULT> { System.out.println("Operador matemático: *");}
+    | <DIV> { System.out.println("Operador matemático: /");}
+
+
+    | <AND> { System.out.println("Operador lógico: &&");}
+    | <OR> { System.out.println("Operador lógico: ||");}
+    | <LESS_THAN> { System.out.println("Operador lógico: <");}
+    | <MORE_THAN> { System.out.println("Operador lógico: >");}
+    | <EQUALS>{ System.out.println("Operador lógico: ==");}
+
+    | <COMMA>{ System.out.println("Separador: ,");}
+    | <ATRIB>{ System.out.println("Atribuição: =");}
+    | <END_LINE>{ System.out.println("Marcação de final de linha: ;");}
+
+    | <APAR> { System.out.println("Abre parênteses: (");}
+    | <FPAR> { System.out.println("Fecha parênteses: )");}
+    | <ACHAVES> { System.out.println("Abre chaves: {");}
+    | <FCHAVES> { System.out.println("Fecha chaves: }");}
+    | t=<NUM> { System.out.println("Número: "+ t.image);}
+    | t=<ID> { System.out.println("Identificador: "+ t.image);}
+    )*
+    <EOF>
+}
