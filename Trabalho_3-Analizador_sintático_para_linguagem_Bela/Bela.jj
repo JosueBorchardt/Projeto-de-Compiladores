@@ -1,0 +1,163 @@
+PARSER_BEGIN(Bela)
+
+import java.io.*;
+public class Bela {
+    public static void main(String args[]) throws ParseException,IOException {
+        Bela analisador = new Bela(new FileInputStream(args[0]));
+ 	    analisador.Bela();
+    }
+}
+
+PARSER_END(Bela)
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}
+
+TOKEN :
+{
+      <MAIN: "main">
+    | <VAR: "var">
+    | <FUN: "fun">
+    | <FLOAT: "float">
+    | <BOOL: "bool">
+    | <VOID: "void">
+    | <IF: "if">
+    | <WHILE: "while">
+    | <THEN: "then">
+    | <RETURN: "return">
+    | <PRINT: "printLn">
+    | <TRUE: "true">
+    | <FALSE: "false">
+    | <READ: "readInput">
+
+    | <ADD: "+">
+    | <SUB: "-">
+    | <MULT: "*">
+    | <DIV: "/">
+    | <AND: "&&">
+    | <OR: "||">
+    | <LESS_THAN: "<">
+    | <MORE_THAN: ">" >
+    | <EQUALS: "==">
+
+    | <COMMA: ",">
+    | <ATRIB: "=">
+    | <APAR: "(">
+    | <FPAR: ")">
+    | <ACHAVES: "{">
+    | <FCHAVES: "}">
+    | <END_LINE: ";">
+}
+
+TOKEN :
+{
+      <NUM : (["0"-"9"])+ ("." (["0"-"9"])+)? ("E" ("+" | "-")? (["0"-"9"])+)?>
+    | <ID: ["a"-"z","A"-"Z"] (("_")? (["a"-"z","A"-"Z","0"-"9"]))*>
+}
+
+void Bela () :
+{}
+{
+    Main() (Func())?
+    <EOF>
+}
+
+void Main () :
+{}
+{
+    <MAIN> <APAR> <FPAR> <ACHAVES> Vardecl() Seqcommands() <FCHAVES>
+}
+
+void Vardecl () :
+{}
+{
+
+    (<VAR> Type() <ID> <END_LINE>)*
+
+}
+
+void Type () :
+{}
+{
+    <FLOAT> | <BOOL> | <VOID>
+}
+
+void Seqcommands () :
+{}
+{
+    (Command())*
+}
+
+void Command () :
+{}
+{
+    //ADICIONAR <THEN AO TRABALHO 2>
+    <ID> CommandL() |
+    <IF> Exp() <THEN> <ACHAVES> Seqcommands() <FCHAVES> <END_LINE> |
+    <WHILE> Exp() <ACHAVES> Seqcommands() <FCHAVES> <END_LINE> |
+    <RETURN> Exp() <END_LINE> |
+    <PRINT> Exp() <END_LINE>
+}
+
+void CommandL () :
+{}
+{
+    <ATRIB> CommandLL() |
+    <APAR> (ListExp())? <FPAR> <END_LINE>
+}
+
+void CommandLL () :
+{}
+{
+    Exp() <END_LINE> |
+    <READ> <APAR> <FPAR> <END_LINE>
+}
+
+void Exp () :
+{}
+{
+    <APAR> Exp() Op() Exp() <FPAR> |
+    Factor()
+}
+
+void Factor () :
+{}
+{
+    <ID> (<APAR> ListExp() <FPAR>)? | <NUM> | <TRUE> | <FALSE>
+
+}
+
+
+
+void Op () :
+{}
+{
+    <ADD> | <SUB> | <MULT> | <DIV> | <AND> | <OR> | <LESS_THAN> | <MORE_THAN> | <EQUALS>
+}
+
+void ListExp () :
+{}
+{
+    Exp() (<COMMA> Exp())*
+}
+
+void Func () :
+{}
+{
+    //ADICIONAR <FUN> NO TRABALHO 2
+    (<FUN> Type() <ID> <APAR> (ListArg())? <FPAR> <ACHAVES> Vardecl() Seqcommands() <FCHAVES>)+
+
+}
+
+void ListArg () :
+{}
+{
+
+    Type() <ID> (<COMMA> Type() <ID>)*
+
+}
