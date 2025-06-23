@@ -23,22 +23,25 @@ TOKEN :
       <MAIN: "main">
     | <VAR: "var">
     | <FUN: "fun">
+
     | <FLOAT: "float">
     | <BOOL: "bool">
     | <VOID: "void">
-    | <IF: "if">
-    | <WHILE: "while">
-    | <THEN: "then">
-    | <RETURN: "return">
-    | <PRINT: "printLn">
     | <TRUE: "true">
     | <FALSE: "false">
+
+    | <IF: "if">
+    | <THEN: "then">
+    | <WHILE: "while">
+    | <RETURN: "return">
+    | <PRINT: "printLn">
     | <READ: "readInput">
 
     | <ADD: "+">
     | <SUB: "-">
     | <MULT: "*">
     | <DIV: "/">
+
     | <AND: "&&">
     | <OR: "||">
     | <LESS_THAN: "<">
@@ -66,6 +69,8 @@ void Bela () :
     (
       <MAIN> { System.out.println("Palavra reservada: main");}
     | <VAR> { System.out.println("Palavra reservada: var");}
+    | <FUN> { System.out.println("Palavra reservada: fun");}
+
     | <FLOAT> { System.out.println("Tipo: float");}
     | <BOOL> { System.out.println("Tipo: bool");}
     | <VOID> { System.out.println("Tipo: void");}
@@ -73,6 +78,7 @@ void Bela () :
     | <FALSE> { System.out.println("Valor lógico: false");}
 
     | <IF> { System.out.println("Palavra reservada: if");}
+    | <THEN> { System.out.println("Palavra reservada: then");}
     | <WHILE> { System.out.println("Palavra reservada: while");}
     | <RETURN> { System.out.println("Palavra reservada: return");}
     | <PRINT> { System.out.println("Palavra reservada: printLn");}
@@ -83,7 +89,6 @@ void Bela () :
     | <MULT> { System.out.println("Operador matemático: *");}
     | <DIV> { System.out.println("Operador matemático: /");}
 
-
     | <AND> { System.out.println("Operador lógico: &&");}
     | <OR> { System.out.println("Operador lógico: ||");}
     | <LESS_THAN> { System.out.println("Operador lógico: <");}
@@ -92,12 +97,12 @@ void Bela () :
 
     | <COMMA>{ System.out.println("Separador: ,");}
     | <ATRIB>{ System.out.println("Atribuição: =");}
-    | <END_LINE>{ System.out.println("Marcação de final de linha: ;");}
-
     | <APAR> { System.out.println("Abre parênteses: (");}
     | <FPAR> { System.out.println("Fecha parênteses: )");}
     | <ACHAVES> { System.out.println("Abre chaves: {");}
     | <FCHAVES> { System.out.println("Fecha chaves: }");}
+    | <END_LINE>{ System.out.println("Marcação de final de linha: ;");}
+
     | t=<NUM> { System.out.println("Número: "+ t.image);}
     | t=<ID> { System.out.println("Identificador: "+ t.image);}
     )*

@@ -13,15 +13,17 @@ public class Bela implements BelaConstants {
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case MAIN:
       case VAR:
+      case FUN:
       case FLOAT:
       case BOOL:
       case VOID:
+      case TRUE:
+      case FALSE:
       case IF:
+      case THEN:
       case WHILE:
       case RETURN:
       case PRINT:
-      case TRUE:
-      case FALSE:
       case READ:
       case ADD:
       case SUB:
@@ -56,6 +58,10 @@ public class Bela implements BelaConstants {
         jj_consume_token(VAR);
               System.out.println("Palavra reservada: var");
         break;
+      case FUN:
+        jj_consume_token(FUN);
+              System.out.println("Palavra reservada: fun");
+        break;
       case FLOAT:
         jj_consume_token(FLOAT);
                 System.out.println("Tipo: float");
@@ -79,6 +85,10 @@ public class Bela implements BelaConstants {
       case IF:
         jj_consume_token(IF);
              System.out.println("Palavra reservada: if");
+        break;
+      case THEN:
+        jj_consume_token(THEN);
+               System.out.println("Palavra reservada: then");
         break;
       case WHILE:
         jj_consume_token(WHILE);
@@ -140,10 +150,6 @@ public class Bela implements BelaConstants {
         jj_consume_token(ATRIB);
                System.out.println("Atribui\u00e7\u00e3o: =");
         break;
-      case END_LINE:
-        jj_consume_token(END_LINE);
-                  System.out.println("Marca\u00e7\u00e3o de final de linha: ;");
-        break;
       case APAR:
         jj_consume_token(APAR);
                System.out.println("Abre par\u00eanteses: (");
@@ -159,6 +165,10 @@ public class Bela implements BelaConstants {
       case FCHAVES:
         jj_consume_token(FCHAVES);
                   System.out.println("Fecha chaves: }");
+        break;
+      case END_LINE:
+        jj_consume_token(END_LINE);
+                  System.out.println("Marca\u00e7\u00e3o de final de linha: ;");
         break;
       case NUM:
         t = jj_consume_token(NUM);
@@ -198,7 +208,7 @@ public class Bela implements BelaConstants {
       jj_la1_0 = new int[] {0xffffffe0,0xffffffe0,};
    }
    private static void jj_la1_init_1() {
-      jj_la1_1 = new int[] {0x7,0x7,};
+      jj_la1_1 = new int[] {0x1f,0x1f,};
    }
 
   /** Constructor with InputStream. */
@@ -336,7 +346,7 @@ public class Bela implements BelaConstants {
   /** Generate ParseException. */
   static public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[35];
+    boolean[] la1tokens = new boolean[37];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -353,7 +363,7 @@ public class Bela implements BelaConstants {
         }
       }
     }
-    for (int i = 0; i < 35; i++) {
+    for (int i = 0; i < 37; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

@@ -1,0 +1,14 @@
+main () {
+    var float idade;
+    var bool maior;
+    idade = readInput();
+    maior = maior_de_idade(idade);
+    printLn maior;
+}
+
+fun bool maior_de_idade (float idade) {
+    if (idade < 18) then {
+        return false;
+    }
+    return true;
+}

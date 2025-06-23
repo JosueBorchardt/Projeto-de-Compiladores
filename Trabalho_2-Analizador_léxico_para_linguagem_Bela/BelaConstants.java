@@ -13,61 +13,65 @@ public interface BelaConstants {
   /** RegularExpression Id. */
   int VAR = 6;
   /** RegularExpression Id. */
-  int FLOAT = 7;
+  int FUN = 7;
   /** RegularExpression Id. */
-  int BOOL = 8;
+  int FLOAT = 8;
   /** RegularExpression Id. */
-  int VOID = 9;
+  int BOOL = 9;
   /** RegularExpression Id. */
-  int IF = 10;
+  int VOID = 10;
   /** RegularExpression Id. */
-  int WHILE = 11;
+  int TRUE = 11;
   /** RegularExpression Id. */
-  int RETURN = 12;
+  int FALSE = 12;
   /** RegularExpression Id. */
-  int PRINT = 13;
+  int IF = 13;
   /** RegularExpression Id. */
-  int TRUE = 14;
+  int THEN = 14;
   /** RegularExpression Id. */
-  int FALSE = 15;
+  int WHILE = 15;
   /** RegularExpression Id. */
-  int READ = 16;
+  int RETURN = 16;
   /** RegularExpression Id. */
-  int ADD = 17;
+  int PRINT = 17;
   /** RegularExpression Id. */
-  int SUB = 18;
+  int READ = 18;
   /** RegularExpression Id. */
-  int MULT = 19;
+  int ADD = 19;
   /** RegularExpression Id. */
-  int DIV = 20;
+  int SUB = 20;
   /** RegularExpression Id. */
-  int AND = 21;
+  int MULT = 21;
   /** RegularExpression Id. */
-  int OR = 22;
+  int DIV = 22;
   /** RegularExpression Id. */
-  int LESS_THAN = 23;
+  int AND = 23;
   /** RegularExpression Id. */
-  int MORE_THAN = 24;
+  int OR = 24;
   /** RegularExpression Id. */
-  int EQUALS = 25;
+  int LESS_THAN = 25;
   /** RegularExpression Id. */
-  int COMMA = 26;
+  int MORE_THAN = 26;
   /** RegularExpression Id. */
-  int ATRIB = 27;
+  int EQUALS = 27;
   /** RegularExpression Id. */
-  int APAR = 28;
+  int COMMA = 28;
   /** RegularExpression Id. */
-  int FPAR = 29;
+  int ATRIB = 29;
   /** RegularExpression Id. */
-  int ACHAVES = 30;
+  int APAR = 30;
   /** RegularExpression Id. */
-  int FCHAVES = 31;
+  int FPAR = 31;
   /** RegularExpression Id. */
-  int END_LINE = 32;
+  int ACHAVES = 32;
   /** RegularExpression Id. */
-  int NUM = 33;
+  int FCHAVES = 33;
   /** RegularExpression Id. */
-  int ID = 34;
+  int END_LINE = 34;
+  /** RegularExpression Id. */
+  int NUM = 35;
+  /** RegularExpression Id. */
+  int ID = 36;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -81,15 +85,17 @@ public interface BelaConstants {
     "\"\\r\"",
     "\"main\"",
     "\"var\"",
+    "\"fun\"",
     "\"float\"",
     "\"bool\"",
     "\"void\"",
+    "\"true\"",
+    "\"false\"",
     "\"if\"",
+    "\"then\"",
     "\"while\"",
     "\"return\"",
     "\"printLn\"",
-    "\"true\"",
-    "\"false\"",
     "\"readInput\"",
     "\"+\"",
     "\"-\"",
