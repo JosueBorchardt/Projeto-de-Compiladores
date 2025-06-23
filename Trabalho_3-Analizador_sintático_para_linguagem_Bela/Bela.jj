@@ -76,9 +76,7 @@ void Main () :
 void Vardecl () :
 {}
 {
-
     (<VAR> Type() <ID> <END_LINE>)*
-
 }
 
 void Type () :
@@ -96,7 +94,6 @@ void Seqcommands () :
 void Command () :
 {}
 {
-    //ADICIONAR <THEN AO TRABALHO 2>
     <ID> CommandL() |
     <IF> Exp() <THEN> <ACHAVES> Seqcommands() <FCHAVES> <END_LINE> |
     <WHILE> Exp() <ACHAVES> Seqcommands() <FCHAVES> <END_LINE> |
@@ -129,10 +126,7 @@ void Factor () :
 {}
 {
     <ID> (<APAR> ListExp() <FPAR>)? | <NUM> | <TRUE> | <FALSE>
-
 }
-
-
 
 void Op () :
 {}
@@ -149,15 +143,11 @@ void ListExp () :
 void Func () :
 {}
 {
-    //ADICIONAR <FUN> NO TRABALHO 2
     (<FUN> Type() <ID> <APAR> (ListArg())? <FPAR> <ACHAVES> Vardecl() Seqcommands() <FCHAVES>)+
-
 }
 
 void ListArg () :
 {}
 {
-
     Type() <ID> (<COMMA> Type() <ID>)*
-
 }
