@@ -9,6 +9,6 @@ main () {
 fun bool maior_de_idade (float idade) {
     if (idade < 18) then {
         return false;
-    }
+    };
     return true;
 }
